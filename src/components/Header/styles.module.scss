@@ -19,22 +19,50 @@
   justify-content: space-between;
 }
 
+.auth_link {
+  width: 100%;
+  padding: 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 11px;
+  letter-spacing: 5%;
+  text-transform: uppercase;
+  color: white;
+  opacity: 0.65;
+  transition: 200ms ease-in-out;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
 .button_container {
   height: auto;
   display: flex;
   align-items: center;
   gap: 10px;
-}
 
-.route {
-  text-align: center
-}
+  .route {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 10%;
+    opacity: 0.65;
+  }
 
-.divisor {
-  width: 1px;
-  height: 20px;
-  content: "";
-  background-color: rgb(255, 255, 255);
+  .vertical_divisor {
+    width: 1px;
+    height: 20px;
+    content: "";
+    background-color: rgb(255, 255, 255);
+    opacity: 0.25;
+  }
+
+  .button {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
 }
 
 .horizontal_divisor {
@@ -42,11 +70,7 @@
   height: 1px;
   content: "";
   background-color: rgb(255, 255, 255);
-  opacity: 0.25;
-}
-
-.button {
-  cursor: pointer;
+  opacity: 0.15;
 }
 
 .icon {
@@ -55,6 +79,7 @@
 }
 
 .menu {
+  padding: 25px 0;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -102,42 +127,59 @@
   width: 100%;
   padding: 10px 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+
+  .footer_link {
+    font-size: 11px;
+    letter-spacing: 5%;
+    text-transform: uppercase;
+    color: white;
+    opacity: 0.65;
+    transition: 200ms ease-in-out;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 }
 
-.footer_link {
-  font-size: 12px;
-  font-weight: 400;
+.socials_nav {
+  width: 100%;
+  padding: 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 45px;
+
+  .socials_icon {
+    width: 20px;
+    height: 20px;
+    opacity: 0.65;
+    transition: 200ms ease-in-out;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.copyright {
+  width: 100%;
+  padding: 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 11px;
   letter-spacing: 5%;
   text-transform: uppercase;
   color: white;
   opacity: 0.65;
   transition: 200ms ease-in-out;
+
+  &:hover {
+    opacity: 1;
+  }
 }
-
-.footer_link:hover {
-  opacity: 1;
-}
-
-.socials_nav {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.socials_icon {
-  width: 20px;
-  height: 20px;
-  opacity: 0.65;
-  transition: 200ms ease-in-out;
-}
-
-.socials_icon:hover {
-  opacity: 1;
-}
-
-
 
 @media (max-width: 500px) {
   .header {

@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 // Styles
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 
 // Hooks
 import { useState } from "react";
@@ -14,20 +14,19 @@ import { usePathname } from "next/navigation";
 import { authClient } from "@/lib/auth/client";
 
 export default function Header() {
-  const { data: session, isPending, error, refetch } = authClient.useSession();
+  const { data: session } = authClient.useSession();
   const [isActive, setIsActive] = useState(false);
   const pathname = usePathname();
 
-  const variants = {
-    open: {
-      height: "max-content",
-      padding: "25px 0",
-    },
-    closed: {
-      height: "0px",
-      padding: "0",
-      transition: { delay: 0.3 },
-    },
+  const getRouteLabel = (path: string): string => {
+    if (path === "/") {
+      return "Inicio";
+    }
+
+    const segments = path.split("/").filter(Boolean);
+    const firstSegment = segments[0] || "Inicio";
+
+    return firstSegment.charAt(0).toUpperCase() + firstSegment.slice(1);
   };
 
   const navigationLinks = [
@@ -54,63 +53,56 @@ export default function Header() {
       <nav className={styles.navbar}>
         <Link href="/">
           <Image
-            src="/icons/facebook-logo.svg"
+            src="/images/renzi-logo.png"
             alt="Logo"
-            width={32}
-            height={32}
-            className={styles.icon}
+            width={48}
+            height={48}
+            className={styles.logo}
           />
         </Link>
 
         <div className={styles.button_container}>
-          <span className={styles.route}>{pathname}</span>
+          <span className={styles.route}>{getRouteLabel(pathname)}</span>
 
-          <div className={styles.divisor}></div>
+          <div className={styles.vertical_divisor}></div>
 
-          <div className={styles.button} onClick={() => setIsActive(!isActive)}>
-            <AnimatePresence>
-              {isActive ? (
-                <motion.img
-                  className={styles.icon}
-                  key="close"
-                  src="/icons/x.svg"
-                  alt="Close"
-                  initial={{ y: -10, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                />
-              ) : (
-                <motion.img
-                  className={styles.icon}
-                  key="hamburger"
-                  src="/icons/list.svg"
-                  alt="Hamburger"
-                  initial={{ y: -10, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                />
-              )}
-            </AnimatePresence>
-          </div>
+          <motion.img
+            className={styles.button}
+            onClick={() => setIsActive(!isActive)}
+            key={isActive ? "close" : "hamburger"}
+            src={isActive ? "/icons/x.svg" : "/icons/list.svg"}
+            alt="Hamburger"
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 0.65,
+              transition: { ease: "easeInOut", duration: 0.3 },
+            }}
+            whileHover={{ opacity: 1 }}
+          />
         </div>
       </nav>
 
       <motion.div
         className={styles.collapsible}
-        variants={variants}
-        initial="closed"
-        animate={isActive ? "open" : "closed"}
+        initial={{ height: "0px" }}
+        animate={isActive ? { height: "max-content" } : { height: "0px" }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
       >
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           {isActive && (
             <motion.div
               className={styles.menu}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { delay: 0.3 } }}
-              exit={{ opacity: 0 }}
+              exit={{ opacity: 0, transition: { delay: 0 } }}
             >
               <div className={styles.horizontal_divisor}></div>
 
-              <Link href="/sign-in">
-                <span>Sign In</span>
+              <Link
+                className={styles.auth_link}
+                href={session ? "/auth/signout" : "/auth/signin"}
+              >
+                <span>{session ? "Cerrar sesión" : "Iniciar sesión"}</span>
               </Link>
 
               <div className={styles.horizontal_divisor}></div>

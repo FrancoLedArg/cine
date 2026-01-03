@@ -1,0 +1,146 @@
+.header {
+  max-width: 800px;
+  padding: 0 25px;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 20px);
+  background-color: rgba(31, 31, 31, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(20px);
+  z-index: 100;
+}
+
+.navbar {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button_container {
+  height: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.route {
+  text-align: center
+}
+
+.divisor {
+  width: 1px;
+  height: 20px;
+  content: "";
+  background-color: rgb(255, 255, 255);
+}
+
+.horizontal_divisor {
+  width: 100%;
+  height: 1px;
+  content: "";
+  background-color: rgb(255, 255, 255);
+  opacity: 0.25;
+}
+
+.button {
+  cursor: pointer;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.navigation {
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.navigation_link {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 16px;
+  line-height: 1;
+}
+
+.navigation_index {
+  width: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  color: white;
+  opacity: 0.65;
+}
+
+.navigation_label {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  opacity: 0.65;
+  transition: 200ms ease-in-out;
+}
+
+.navigation_label:hover {
+  opacity: 1;
+}
+
+.footer_nav {
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer_link {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 5%;
+  text-transform: uppercase;
+  color: white;
+  opacity: 0.65;
+  transition: 200ms ease-in-out;
+}
+
+.footer_link:hover {
+  opacity: 1;
+}
+
+.socials_nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.socials_icon {
+  width: 20px;
+  height: 20px;
+  opacity: 0.65;
+  transition: 200ms ease-in-out;
+}
+
+.socials_icon:hover {
+  opacity: 1;
+}
+
+
+
+@media (max-width: 500px) {
+  .header {
+    width: 80%;
+  }
+}

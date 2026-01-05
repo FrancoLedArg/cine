@@ -1,0 +1,32 @@
+.main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.quick_actions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  h2 {
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .main {
+    max-width: 400px;
+    width: 100%;
+  }
+}

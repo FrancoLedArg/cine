@@ -25,9 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${poppins.variable} antialiased`}>
-        <main className="min-h-screen w-full flex justify-center items-center">
-          {children}
-        </main>
+        {children}
         <Toaster />
       </body>
     </html>

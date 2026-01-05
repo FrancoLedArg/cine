@@ -82,3 +82,20 @@ export const movie = pgTable("movie", {
     () => /* @__PURE__ */ new Date()
   ),
 });
+
+// Products
+export const product = pgTable("product", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull(),
+  description: text("description"),
+  price: integer("price").notNull(),
+  image: text("image"),
+  available_stock: integer("available_stock").notNull(),
+  stored_stock: integer("stored_stock").notNull(),
+  createdAt: timestamp("created_at").$defaultFn(
+    () => /* @__PURE__ */ new Date()
+  ),
+  updatedAt: timestamp("updated_at").$defaultFn(
+    () => /* @__PURE__ */ new Date()
+  ),
+});
